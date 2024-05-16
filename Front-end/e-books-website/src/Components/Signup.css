@@ -1,0 +1,270 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:sans-serif ;
+    }
+    section{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+    }
+    section .imgbox{
+        position: relative;
+        width: 50%;
+        height: 100%;
+    }
+   
+    section .imgbox img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    section .contentbox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+    }
+    section .contentbox .formbox{
+        width: 100%;
+    }
+    section .contentbox .formbox h2{
+        color: #607d8b;
+        font-weight: 600;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        border-bottom: 4px solid #ff4584;
+        display: inline-block;
+        letter-spacing: 1px;
+    }
+    section .contentbox .formbox .inputbox{
+        margin-bottom: 20px;
+    }
+    section .contentbox .formbox .inputbox span{
+        font-size: 15px;
+        margin-bottom: 5px;
+        display: inline-block;
+        font-weight: 300px;
+        color: #607db8;
+        font-size:16px;
+        letter-spacing: 1px;
+    }
+    section .contentbox .formbox .inputbox input{
+    
+        width: 100%;
+        padding: 10px 20px;
+        outline: none;
+        font-weight: 400;
+        border: 1px solid #607db8;
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: #607db8;
+        background: transparent;
+        border-radius: 30px;
+    }   
+    .submit-container{
+        display: flex;
+        gap: 30px;
+        margin: 60px auto;
+    }
+    .submit{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 59px;
+        color:#fff ;
+       background: #ff4584;
+        border-radius: 50px;
+        font-size: 19px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    
+    
+  
+    @media(max-width: 768px)    
+    
+    {
+        section .imgbox{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        section .contentbox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        section .contentbox .formbox{
+            width: 100%;
+            padding: 40px;
+            margin: 50px;
+            background: rgb(255 255 255 /0.9);
+        }
+        section .contentbox .formbox h3{
+            color: #607d8b;
+            text-align: center;
+            margin: 30px 0 10px;
+            font-weight: 500;
+        }
+    }
+     */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.background_2 {
+  background: url("../assets/Images/background_12.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+section .imgbox {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+section .imgbox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+section .imgbox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* margin-top: 0px; */
+}
+section .contentbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  /* margin-top: 40px; */
+}
+section .contentbox .formbox {
+  width: 50%;
+}
+section .contentbox .formbox h2 {
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 4px solid #ffcb74;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin-left: 120px;
+}
+section .contentbox .formbox .inputbox {
+  margin-bottom: 20px;
+}
+section .contentbox .formbox .inputbox span {
+  font-size: 15px;
+  margin-bottom: 5px;
+  display: inline-block;
+  font-weight: 300px;
+  color: #607db8;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+section .contentbox .formbox .inputbox input {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  font-weight: 400;
+  border: 1px solid #607db8;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #607db8;
+  background: transparent;
+  border-radius: 30px;
+  margin-bottom: -50px;
+}
+.submit-container .submit{
+  display: flex;
+  gap: 30px;
+  margin: 30px auto;
+  background: orange;
+  margin-bottom: 10px;
+}
+.submit {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 59px;
+  color: #fff;
+  background: orange;
+  border-radius: 50px;
+  border-width: 0;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.login{
+    text-decoration: none;
+    color: #fff;
+
+}
+
+@media (max-width: 768px) {
+  section .imgbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  section .contentbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  section .contentbox .formbox {
+    width: 100%;
+    padding: 40px;
+    margin: 50px;
+    background: rgb(255 255 255 /0.9);
+  }
+  section .contentbox .formbox h3 {
+    color: #607d8b;
+    text-align: center;
+    margin: 30px 0 10px;
+    font-weight: 500;
+  }
+}
