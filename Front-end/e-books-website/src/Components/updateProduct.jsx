@@ -260,7 +260,6 @@ const UpdateProduct = () => {
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <div className="modal-container">
       <div className="form">
@@ -332,17 +331,8 @@ const UpdateProduct = () => {
             </Link>
           </div>
         </form>
-       <div style={{position: 'relative'}}>
-  <button id="generate">Generate</button>
-  <button id="copy" style={{position: 'absolute', top: 0, right: 0}}>
-  </button>
-  <div id="loader" style={{display: 'none', height: 20}} />
-  <textarea id="result" readOnly style={{width: '100%', height: 300, boxSizing: 'border-box', marginTop: 30}} defaultValue={""} />
-</div>
-
       </div>
     </div>
-    
   );
 };
 

@@ -172,6 +172,9 @@ const Table = () => {
                 <Link className="edit" to={`/updateProduct/${product._id}`}>
                   <BsFillPencilFill />
                 </Link>
+                <Link className="edit" to={`/Home/${product._id}`}>
+                  <BsFillPencilFill />
+                </Link>
                 <Link
                   className="delete"
                   onClick={() => handleDelete(product.id)}
