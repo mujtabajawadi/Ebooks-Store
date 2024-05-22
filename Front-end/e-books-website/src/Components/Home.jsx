@@ -57,6 +57,8 @@ function Home() {
   
       {loading && <div style={{ display: 'block', height: '20px' }}>Loading...</div>}
       <textarea id="result" readOnly value={result} style={{ width: '100%', height: '300px', boxSizing: 'border-box', marginTop: '30px' }} />
+
+      <div className="button"></div>
     </div>
   );
 }

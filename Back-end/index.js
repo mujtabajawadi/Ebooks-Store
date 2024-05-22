@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
+require("dotenv").config();
+const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 
 const multer = require('multer');
 
@@ -187,10 +189,37 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-
-
-
 //End Content Generator Code
+app.post("/checkout", async (req, res) => {
+  try {
+    if (!req.body.items || !Array.isArray(req.body.items)) {
+      throw new Error('Invalid items array');
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: req.body.items.map(item => {
+        return {
+          price_data: {
+            currency: "pkr",
+            product_data: {
+              name: item.name
+            },
+            unit_amount: item.price * 100,
+          },
+          quantity: item.quantity
+        };
+      }),
+      success_url: "https://drive.google.com/file/d/1HlHLg1hqNagZ_aJUSr67BciHXUFRNJRk/view?usp=sharing",
+      cancel_url: "http://localhost:5173/cancel"
+    });
+
+    res.json({ url: session.url });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 
 
