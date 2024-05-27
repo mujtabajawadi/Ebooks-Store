@@ -12,31 +12,32 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [prodType, setProdType] = useState();
+  const [newTitle,setTitle] = useState()
 
-  const updateTotal = (cartItems) => {
-    let newTotal = 0;
-    if (cartItems.length > 0) {
-      cartItems.forEach((product) => {
-        const price = parseInt(product.new_price);
-        newTotal += price;
-      });
-    }
-    setTotalAmount(newTotal);
-  };
+  // const updateTotal = (cartItems) => {
+  //   let newTotal = 0;
+  //   if (cartItems.length > 0) {
+  //     cartItems.forEach((product) => {
+  //       const price = parseInt(product.new_price);
+  //       newTotal += price;
+  //     });
+  //   }
+  //   setTotalAmount(newTotal);
+  // };
 
   const addToCart = (newItemAdd) => {
     const prev = cartItems;
     const updatedCart = [...prev, newItemAdd];
     setCartItems(updatedCart);
 
-    updateTotal(updatedCart);
+    // updateTotal(updatedCart);
     alert("Item Added");
   };
   console.log(cartItems);
   const removeFromCart = (itemId) => {
-    const updatedCart = cartItems.filter((product) => product.id !== itemId);
+    const updatedCart = cartItems.filter((product) => product._id != itemId);
     setCartItems(updatedCart);
-    updateTotal(updatedCart);
+    // updateTotal(updatedCart);
     alert("Item Removed");
   };
   console.log(cartItems);
@@ -54,6 +55,8 @@ const ShopContextProvider = (props) => {
     totalAmount,
     prodType,
     setProdType,
+    newTitle,
+    setTitle
   };
   return (
     <ShopContext.Provider value={contextvalue}>

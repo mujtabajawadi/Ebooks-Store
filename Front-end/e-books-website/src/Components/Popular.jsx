@@ -6,7 +6,7 @@ import axios from "axios";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Popular = () => {
-  const { setProdType, setItemId } = useContext(ShopContext);
+  const { setProdType, setItemId,setTitle } = useContext(ShopContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +28,7 @@ const Popular = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.log(products)
   return (
     <div className="popular">
       <div className="container">
@@ -39,7 +39,7 @@ const Popular = () => {
             <div
               key={i}
               className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
-              onClick={() => { setItemId(item._id); setProdType("dataProd"); }}
+              onClick={() => { setItemId(item._id); setTitle(item.title) /*setProdType("dataProd");*/ }}
             >
               <Item
                 id={item._id}

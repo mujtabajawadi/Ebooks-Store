@@ -12,6 +12,9 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Product = (props) => {
+
+  
+
   // AI module Start
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState('');
@@ -21,11 +24,12 @@ const Product = (props) => {
   });
 
   useEffect(() => {
+    console.log(id)
     axios
       .get(`http://localhost:8080/products/getProduct/${id}`)
       .then((result) => {
-        setBook(result.data);
-        console.log(result.data);
+        setBook(result.data.title);
+        console.log(result.data.title);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -34,9 +38,9 @@ const Product = (props) => {
     try {
       setResult('Generating...');
       
-      const response = await fetch(`http://localhost:8080/generateContent/Give me detail about the ${book.title}`);
+      const response = await fetch(`http://localhost:8080/generateContent/Give me detail about the book ${book}`);
       const text = await response.text();
-      
+      console.log(text)
       setResult(text);
     } catch (error) {
       console.error('Error during generation:', error.message);
@@ -53,6 +57,7 @@ const Product = (props) => {
     document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location.pathname]);
 
+  
   // Context
   const { product } = props;
   const {
@@ -63,24 +68,42 @@ const Product = (props) => {
     itemId,
     addToCart,
     all_product,
+    newTitle
   } = useContext(ShopContext);
 
+  const [products, setProducts] = useState([]);
+  
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/products");
+      setProducts(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setLoading(false);
+    }
+  };
+  console.log(newTitle)
+  
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  
   // Function to render product item
   const renderProductItem = (item) => (
-    <div key={item.id} className="product-card mb-4">
+    <div key={item._id} className="product-card mb-4">
       <div className="card h-100">
         <Item
-          id={item.id}
-          name={item.name}
-          image={item.image}
-          new_price={item.new_price}
-          old_price={item.old_price}
+          id={item._id}
+          name={item.title}
+          image={item.thumbnail}
+          new_price={item.price}
         />
         <div className="card-body">
           <button
             className="btn btn-primary w-100"
             onClick={() => {
-              if (cartItems.some((element) => element.id === item.id)) {
+              if (cartItems.some((element) => element._id == item._id)) {
                 alert("Item Already Exist");
               } else {
                 addToCart(item);
@@ -104,47 +127,21 @@ const Product = (props) => {
 
   return (
     <div className="container mt-5">
-      <Navbar></Navbar>
       <div className="row">
         <div className="col-md-4">
-          {prodType === "saleProd" &&
-            new_collections.map((item) => {
-              if (item.id === itemId) {
-                return renderProductItem(item);
-              }
-              return null; // Return null if the item.id does not match itemId
-            })}
+          
 
-          {prodType === "dataProd" &&
-            data_product.map((item) => {
-              if (item.id === itemId) {
+          {
+            products.map((item) => {
+              if (item._id == itemId) {
+                console.log(item._id)
                 return renderProductItem(item);
               }
               return null; // Return null if the item.id does not match itemId
-            })}
+            })
+            }
 
-          {prodType === "ficProd" &&
-            all_product.map((item) => {
-              if (item.id === itemId) {
-                return renderProductItem(item);
-              }
-              return null; // Return null if the item.id does not match itemId
-            })}
-          {prodType === "nonficProd" &&
-            all_product.map((item) => {
-              if (item.id === itemId) {
-                return renderProductItem(item);
-              }
-              return null; // Return null if the item.id does not match itemId
-            })}
-
-          {prodType === "bioProd" &&
-            all_product.map((item) => {
-              if (item.id === itemId) {
-                return renderProductItem(item);
-              }
-              return null; // Return null if the item.id does not match itemId
-            })}
+          
         </div>
         
         <div className="col-md-8">
@@ -152,14 +149,13 @@ const Product = (props) => {
           <input
             type="text"
             name="title"
-            value={book.title}
+            value={book}
           />
           <button onClick={fetchContent} disabled={loading}>Get More Info</button>
           {loading && <div style={{ display: 'block', height: '20px' }}>Loading...</div>}
           <textarea id="result" readOnly value={result} className="result-textarea" />
         </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

@@ -7,21 +7,21 @@ const Checkout = () => {
    const [quantity,setquantity] = useState(1);
    const [finalAmount, setfinalamount] = useState(itemPrice);
 
-   const decrement =()=>{
-      if(quantity<=1){
-         setquantity(1);
-         setfinalamount(itemPrice);
-      }
-      else if(quantity>1){
-         setquantity(quantity-1);
-         setfinalamount(finalAmount-itemPrice);
-      }
-   }
-   const increment = ()=>{
-      setquantity(quantity+1);
-      setfinalamount(finalAmount+itemPrice);
-   }
-
+   // const decrement =()=>{
+   //    if(quantity<=1){
+   //       setquantity(1);
+   //       setfinalamount(itemPrice);
+   //    }
+   //    else if(quantity>1){
+   //       setquantity(quantity-1);
+   //       setfinalamount(finalAmount-itemPrice);
+   //    }
+   // }
+   // const increment = ()=>{
+   //    setquantity(quantity+1);
+   //    setfinalamount(finalAmount+itemPrice);
+   // }
+   
    const checkout = async()=>{
       try {
          const res = await fetch("http://localhost:8080/checkout", {

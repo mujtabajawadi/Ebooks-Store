@@ -24,7 +24,7 @@ const Navbar = () => {
               <li>
                 <Link to="/Home">Home</Link>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <span>Categories</span>
                 <div className="dropdown-content">
                   <li className="ps-5">

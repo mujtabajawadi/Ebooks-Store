@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Item from "./Item";
 import { ShopContext } from "./ShopContext";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 
@@ -22,31 +23,37 @@ const Cart = () => {
           <div key={i} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div className="card h-100">
               <Item
-                id={item.id}
-                name={item.name}
-                image={item.image}
-                new_price={item.new_price}
-                old_price={item.old_price}
+                id={item._id}
+                name={item.title}
+                image={item.thumbnail}
+                new_price={item.price}
               />
               <div className="card-body">
                 <button
                   className="btn btn-danger btn-block"
                   onClick={() => {
-                    removeFromCart(item.id);
+                    removeFromCart(item._id);
                   }}
                 >
                   Remove
                 </button>
+                <Link className="checkout" to="/checkout">
+                <button
+                  className="btn btn-danger btn-block"
+                >
+                  Checkout
+                </button>
+                </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="row mt-4">
+      {/* <div className="row mt-4">
         <div className="col-12 text-right">
           <h1>Total Amount: ${totalAmount}</h1>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
