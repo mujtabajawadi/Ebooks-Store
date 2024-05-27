@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect, useState, useEffect } from "react";
 import { ShopContext } from "./ShopContext";
 import { useLocation } from "react-router-dom";
 import Item from "./Item";
@@ -6,8 +6,47 @@ import "./Products1.css";
 import star_icon from "../assets/Images/star_icon.png";
 import star_dull_icon from "../assets/Images/star_dull_icon.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
+import { useParams } from 'react-router-dom';
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Product = (props) => {
+  // AI module Start
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState('');
+  const { id } = useParams(); // Accessing id parameter from URL
+  const [book, setBook] = useState({
+    title: "",
+  });
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/products/getProduct/${id}`)
+      .then((result) => {
+        setBook(result.data);
+        console.log(result.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
+  async function fetchContent() {
+    try {
+      setResult('Generating...');
+      
+      const response = await fetch(`http://localhost:8080/generateContent/Give me detail about the ${book.title}`);
+      const text = await response.text();
+      
+      setResult(text);
+    } catch (error) {
+      console.error('Error during generation:', error.message);
+      setResult('Error during generation. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // AI module end
   // Scroll reset
   const location = useLocation();
   useLayoutEffect(() => {
@@ -28,7 +67,7 @@ const Product = (props) => {
 
   // Function to render product item
   const renderProductItem = (item) => (
-    <div key={item.id} className="col-12 col-md-6 col-lg-4 mb-4">
+    <div key={item.id} className="product-card mb-4">
       <div className="card h-100">
         <Item
           id={item.id}
@@ -52,68 +91,75 @@ const Product = (props) => {
           </button>
         </div>
       </div>
+      <div className="d-flex align-items-center mt-2">
+        <img src={star_icon} className="star mr-1" alt="star" />
+        <img src={star_icon} className="star mr-1" alt="star" />
+        <img src={star_icon} className="star mr-1" alt="star" />
+        <img src={star_icon} className="star mr-1" alt="star" />
+        <img src={star_dull_icon} className="star mr-1" alt="star" />
+        <p className="mb-0">(122)</p>
+      </div>
     </div>
   );
 
   return (
     <div className="container mt-5">
+      <Navbar></Navbar>
       <div className="row">
-        {prodType === "saleProd" &&
-          new_collections.map((item) => {
-            if (item.id === itemId) {
-              return renderProductItem(item);
-            }
-            return null; // Return null if the item.id does not match itemId
-          })}
+        <div className="col-md-4">
+          {prodType === "saleProd" &&
+            new_collections.map((item) => {
+              if (item.id === itemId) {
+                return renderProductItem(item);
+              }
+              return null; // Return null if the item.id does not match itemId
+            })}
 
-        {prodType === "dataProd" &&
-          data_product.map((item) => {
-            if (item.id === itemId) {
-              return renderProductItem(item);
-            }
-            return null; // Return null if the item.id does not match itemId
-          })}
+          {prodType === "dataProd" &&
+            data_product.map((item) => {
+              if (item.id === itemId) {
+                return renderProductItem(item);
+              }
+              return null; // Return null if the item.id does not match itemId
+            })}
 
-        {prodType === "ficProd" &&
-          all_product.map((item) => {
-            if (item.id === itemId) {
-              return renderProductItem(item);
-            }
-            return null; // Return null if the item.id does not match itemId
-          })}
-        {prodType === "nonficProd" &&
-          all_product.map((item) => {
-            if (item.id === itemId) {
-              return renderProductItem(item);
-            }
-            return null; // Return null if the item.id does not match itemId
-          })}
+          {prodType === "ficProd" &&
+            all_product.map((item) => {
+              if (item.id === itemId) {
+                return renderProductItem(item);
+              }
+              return null; // Return null if the item.id does not match itemId
+            })}
+          {prodType === "nonficProd" &&
+            all_product.map((item) => {
+              if (item.id === itemId) {
+                return renderProductItem(item);
+              }
+              return null; // Return null if the item.id does not match itemId
+            })}
 
-        {prodType === "bioProd" &&
-          all_product.map((item) => {
-            if (item.id === itemId) {
-              return renderProductItem(item);
-            }
-            return null; // Return null if the item.id does not match itemId
-          })}
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <div className="d-flex align-items-center">
-            <img src={star_icon} className="star mr-1" alt="star" />
-            <img src={star_icon} className="star mr-1" alt="star" />
-            <img src={star_icon} className="star mr-1" alt="star" />
-            <img src={star_icon} className="star mr-1" alt="star" />
-            <img src={star_dull_icon} className="star mr-1" alt="star" />
-            <p className="mb-0">(122)</p>
-          </div>
-          <p className="mt-3">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
-            molestias aliquam quos explicabo fuga nihil in voluptate perferendis
-            consequatur nam.
-          </p>
+          {prodType === "bioProd" &&
+            all_product.map((item) => {
+              if (item.id === itemId) {
+                return renderProductItem(item);
+              }
+              return null; // Return null if the item.id does not match itemId
+            })}
+        </div>
+        
+        <div className="col-md-8">
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            value={book.title}
+          />
+          <button onClick={fetchContent} disabled={loading}>Get More Info</button>
+          {loading && <div style={{ display: 'block', height: '20px' }}>Loading...</div>}
+          <textarea id="result" readOnly value={result} className="result-textarea" />
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -5,12 +5,14 @@ const {
   fetchProductById,
   updateProduct,
   deleteProduct,
+  getProductImage,
 } = require("../controller/Product");
 
 const router = express.Router();
 
 router
   .get("/", fetchAllProducts)
+  .get("/getImage", getProductImage)
   .post("/createProduct", createProduct)
   .get("/getProduct/:id", fetchProductById)
   .patch("/updateProduct/:id", updateProduct)

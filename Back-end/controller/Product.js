@@ -57,7 +57,7 @@ exports.fetchAllProducts = async (req, res) => {
     // Modify each product object to include the image URL
     const productsWithImageURL = products.map((product) => ({
       ...product._doc,
-      thumbnail: `${req.protocol}://${req.get("host")}/products/${product.thumbnail}`,
+      thumbnail: `${req.protocol}://${req.get("host")}/uploads/${path.basename(product.thumbnail)}`,
     }));
 
     // Send the modified product list as the response
@@ -69,14 +69,13 @@ exports.fetchAllProducts = async (req, res) => {
 };
 
 exports.getProductImage = (req, res) => {
-  // Get the filename from the request params
   const filename = req.params.filename;
-
-  // Construct the file path
-  const filePath = path.join(__dirname, "../uploads", filename);
-
-  // Send the file as the response
-  res.sendFile(filePath);
+  const filePath = path.join(__dirname, '../uploads', filename);
+  res.sendFile(filePath, err => {
+    if (err) {
+      res.status(404).send('File not found');
+    }
+  });
 };
 
 

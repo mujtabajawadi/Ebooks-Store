@@ -12,10 +12,7 @@ import NewsLetter from "./NewsLetter";
 import Reviews from "./Reviews";
 import Footer from "./Footer";
 
-
-
 const Home = (props) => {
-
   const { type, setType, all_product, setProdType, setItemId } =
     useContext(ShopContext);
   useEffect(() => {
@@ -28,7 +25,7 @@ const Home = (props) => {
       <Hero></Hero>
       <Popular></Popular>
       <Offers></Offers>
-    <NewCollections></NewCollections>
+      <NewCollections></NewCollections>
       <NewsLetter></NewsLetter>
       <Reviews></Reviews>
       <Footer></Footer>
