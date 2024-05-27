@@ -1,0 +1,16 @@
+li {
+  list-style-type: none;
+  padding-left: 40px;
+}
+ul {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+.footer-icon-container {
+  display: inline;
+}
+.footer {
+  /* background: var(--color-bg-2); */
+  background-color: white;
+}

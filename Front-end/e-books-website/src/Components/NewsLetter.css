@@ -1,0 +1,28 @@
+.newsletter{
+   background: #EDE8E4;
+}
+.subscribe-btn{
+   background-color:orange;
+   color: white;
+   padding-inline: 3%;
+   padding-block: 1%;
+   border-radius: 25px;
+position: absolute;
+
+       left: 57%;
+}
+.email-input{
+   padding-right: 21%;
+   padding-left: 2%;
+   padding-block: 1%;
+border-radius: 25px;
+border:1px solid orange;
+position: relative;
+}
+.pos-rel{
+   position: relative;
+}
+.font{
+  font-family:"Prata", serif;
+  font-size: 30px;
+}

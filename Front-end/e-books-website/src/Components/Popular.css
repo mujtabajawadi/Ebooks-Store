@@ -1,0 +1,10 @@
+.popular{
+   background: var(--color-bg-1);
+    }
+    .h1{
+       font-size: 48px;
+       font-family:"Prata", serif; 
+       text-align: center;
+       padding-top: 20px;
+       color: orange;
+   }
