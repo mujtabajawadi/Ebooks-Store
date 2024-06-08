@@ -46,6 +46,7 @@ const Popular = () => {
                 name={item.title}
                 image={item.thumbnail}
                 new_price={item.price}
+                
               />
             </div>
           ))}

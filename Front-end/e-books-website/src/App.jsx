@@ -21,18 +21,20 @@ import Biographies from "./Components/Biographies";
 import Sale from "./Components/Sale";
 import Blogs from "./Components/Blogs";
 import Cart from "./Components/Cart";
+import About from "./Components/About";
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/fiction" element={<Fiction banner={fictionBanner}/>}/>
         <Route path="/non-fiction" element={<NonFiction banner={nonfictionBanner}/>}/>
         <Route path="/biographies" element={<Biographies banner={biographiesBanner}/>}/>
         <Route path="/sale" element={<Sale />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product" element={<Product />} />
         <Route path="/success" element={<Success />} />

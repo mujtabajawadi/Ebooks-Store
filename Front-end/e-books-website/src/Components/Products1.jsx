@@ -137,7 +137,7 @@ const Product = (props) => {
                 console.log(item._id)
                 return renderProductItem(item);
               }
-              return null; // Return null if the item.id does not match itemId
+              return null; // Return null if the item._id does not match itemId
             })
             }
 
@@ -145,12 +145,6 @@ const Product = (props) => {
         </div>
         
         <div className="col-md-8">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            value={book}
-          />
           <button onClick={fetchContent} disabled={loading}>Get More Info</button>
           {loading && <div style={{ display: 'block', height: '20px' }}>Loading...</div>}
           <textarea id="result" readOnly value={result} className="result-textarea" />

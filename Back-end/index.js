@@ -14,7 +14,7 @@ const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 app.use(cors({
   origin: 'http://localhost:5173', // Replace with your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
+  allowedHeaders: 'Content-Type',
 }));
 
 // Set storage engine for multer
@@ -161,11 +161,12 @@ app.post("/checkout", async (req, res) => {
     if (!req.body.items || !Array.isArray(req.body.items)) {
       throw new Error('Invalid items array');
     }
-
+    // console.log(req.body.items[0])
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
       line_items: req.body.items.map(item => {
+        console.log(item)
         return {
           price_data: {
             currency: "pkr",
@@ -174,7 +175,7 @@ app.post("/checkout", async (req, res) => {
             },
             unit_amount: item.price * 100,
           },
-          quantity: item.quantity
+          quantity: 1
         };
       }),
       success_url: "https://drive.google.com/file/d/1HlHLg1hqNagZ_aJUSr67BciHXUFRNJRk/view?usp=sharing",

@@ -53,7 +53,7 @@ const Reviews = () => {
                   borderRadius: "35px",
                 }}
               />
-              <h2 class="fw-normal ">Heading</h2>
+              <h2 className="fw-normal ">Heading</h2>
               <p className="text-black">
                 Some representative placeholder content for the three columns of
                 text below the carousel. This is the first column.
@@ -94,7 +94,7 @@ const Reviews = () => {
                   borderRadius: "35px",
                 }}
               />
-              <h2 class="fw-normal ">Heading</h2>
+              <h2 className="fw-normal ">Heading</h2>
               <p className="text-black">
                 Some representative placeholder content for the three columns of
                 text below the carousel. This is the first column.
@@ -135,7 +135,7 @@ const Reviews = () => {
                   borderRadius: "35px",
                 }}
               />
-              <h2 class="fw-normal ">Heading</h2>
+              <h2 className="fw-normal ">Heading</h2>
               <p className="text-black">
                 Some representative placeholder content for the three columns of
                 text below the carousel. This is the first column.
@@ -176,7 +176,7 @@ const Reviews = () => {
                   borderRadius: "35px",
                 }}
               />
-              <h2 class="fw-normal ">Heading</h2>
+              <h2 className="fw-normal ">Heading</h2>
               <p className="text-black">
                 Some representative placeholder content for the three columns of
                 text below the carousel. This is the first column.
@@ -217,7 +217,7 @@ const Reviews = () => {
                   borderRadius: "35px",
                 }}
               />
-              <h2 class="fw-normal ">Heading</h2>
+              <h2 className="fw-normal ">Heading</h2>
               <p className="text-black">
                 Some representative placeholder content for the three columns of
                 text below the carousel. This is the first column.
@@ -258,7 +258,7 @@ const Reviews = () => {
                   borderRadius: "35px",
                 }}
               />
-              <h2 class="fw-normal ">Heading</h2>
+              <h2 className="fw-normal ">Heading</h2>
               <div className="text-black">
                 Some representative placeholder content for the three columns of
                 text below the carousel. This is the first column.

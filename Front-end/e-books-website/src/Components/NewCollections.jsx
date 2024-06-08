@@ -1,32 +1,57 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./NewCollections.css";
 import new_collection from "../assets/new_collections";
 import Item from "./Item";
 import { ShopContext } from "./ShopContext";
-
-
+import axios from "axios";
 
 const NewCollections = () => {
-  const { setItemId , setProdType} = useContext(ShopContext);
+  const { setProdType, setItemId, setTitle } = useContext(ShopContext);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/products");
+      setProducts(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  console.log(products);
   return (
     <div className="new-collections">
-      <div className=" container">
+      <div className="container">
         <h1 className="h1">New Collection</h1>
         <hr />
-        <div className="collections row">
-          {new_collection.map((item, i) => {
-            return (
-              <div key={i} className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" onClick={() => {setItemId(item.id);setProdType("saleProd")} }>
-                <Item
-                  id={item.id}
-                  name={item.name}
-                  image={item.image}
-                  new_price={item.new_price}
-                  old_price={item.old_price}
-                />
-              </div>
-            );
-          })}
+        <div className="popular-item row">
+          {products.map((item, i) => (
+            <div
+              key={i}
+              className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+              onClick={() => {
+                setItemId(item._id);
+                setTitle(item.title); /*setProdType("dataProd");*/
+              }}
+            >
+              <Item
+                id={item._id}
+                name={item.title}
+                image={item.thumbnail}
+                new_price={item.price}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

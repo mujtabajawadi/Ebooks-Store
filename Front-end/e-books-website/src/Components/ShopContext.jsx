@@ -13,17 +13,8 @@ const ShopContextProvider = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [prodType, setProdType] = useState();
   const [newTitle,setTitle] = useState()
+  const [selectedItems, setSelectedItems] = useState([]);
 
-  // const updateTotal = (cartItems) => {
-  //   let newTotal = 0;
-  //   if (cartItems.length > 0) {
-  //     cartItems.forEach((product) => {
-  //       const price = parseInt(product.new_price);
-  //       newTotal += price;
-  //     });
-  //   }
-  //   setTotalAmount(newTotal);
-  // };
 
   const addToCart = (newItemAdd) => {
     const prev = cartItems;
@@ -56,7 +47,9 @@ const ShopContextProvider = (props) => {
     prodType,
     setProdType,
     newTitle,
-    setTitle
+    setTitle,
+    setSelectedItems,
+    selectedItems
   };
   return (
     <ShopContext.Provider value={contextvalue}>

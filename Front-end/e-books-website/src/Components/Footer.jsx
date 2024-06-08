@@ -16,14 +16,13 @@ const Footer = () => {
             height: "60px", // Maintain aspect ratio
           }}
         />
-        <p className="pt-3" style={{fontSize:"30px",color:"orange"}}>SHOPPER</p>
+      
       </div>
       <ul className="footer-links">
-        <li>Company</li>
-        <li>Products</li>
-        <li>Offices</li>
-        <li>About</li>
+      
         <li>Contact</li>
+        <li>Blogs</li>
+        
       </ul>
       <div className="footer-social-icon text-center">
         <div className="footer-icon-container" >
@@ -56,7 +55,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
         <hr />
-        <p className="text-center">Copyright @ 2023 - All Right Reserved.</p>
+        <p className="text-center">Copyright @ 2023 - All Rights Reserved</p>
       </div>
     </div>
     </div>

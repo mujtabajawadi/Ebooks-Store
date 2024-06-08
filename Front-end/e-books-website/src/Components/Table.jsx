@@ -5,15 +5,30 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+
 const Table = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/products")
-      .then((result) => setProducts(result.data))
-      .catch((err) => console.log(err));
+    fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/products");
+      setProducts(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setLoading(false);
+    }
+  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  console.log(products);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -62,27 +77,27 @@ const Table = () => {
         </thead>
 
         <tbody>
-          {products.map((product) => (
-            <tr key={product._id}>
-              <td>{product.title}</td>
-              <td>{product.price}</td>
-              <td>{product.rating}</td>
-              <td>{product.stock}</td>
-              <td>{product.category}</td>
+          {products.map((item) => (
+            <tr key={item._id}>
+              <td>{item.title}</td>
+              <td>{item.price}</td>
+              <td>{item.rating}</td>
+              <td>{item.stock}</td>
+              <td>{item.category}</td>
               <td>
                 <img
-                  src={`http://localhost:8080/uploads/${product.thumbnail}`}
-                  alt={product.title}
+                  src={`http://localhost:8080/uploads/${item.thumbnail}`}
+                  alt={item.title}
                   className="thumbnail"
                 />
               </td>
               <td className="actions">
-                <Link className="edit" to={`/updateProduct/${product._id}`}>
+                <Link className="edit" to={`/updateProduct/${item._id}`}>
                   <BsFillPencilFill />
                 </Link>
                 <Link
                   className="delete"
-                  onClick={() => handleDelete(product._id)}
+                  onClick={() => handleDelete(item._id)}
                 >
                   <BsFillTrashFill />
                 </Link>
