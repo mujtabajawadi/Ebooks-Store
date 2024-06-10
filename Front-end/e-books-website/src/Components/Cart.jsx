@@ -57,7 +57,7 @@ import { Link } from "react-router-dom";
 import Checkout from "./Checkout";
 
 const Cart = () => {
-  const { cartItems, removeFromCart,setSelectedItems,selectedItems } = useContext(ShopContext);
+  const { cartItems, removeFromCart,setSelectedItems,selectedItems, getLocalCartData } = useContext(ShopContext);
   // const [selectedItems, setSelectedItems] = useState([]);
 
   const handleCheckout = (id) => {

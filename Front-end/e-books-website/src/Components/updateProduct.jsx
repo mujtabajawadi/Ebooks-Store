@@ -371,7 +371,7 @@ const UpdateProduct = () => {
     price: "",
     category: "",
     rating: "",
-    stock: "",
+    author: "",
     thumbnail: null, // Changed initial value to null
   });
 
@@ -472,7 +472,7 @@ const UpdateProduct = () => {
             <label htmlFor="stock">Author</label>
             <input
               type="text"
-              name="stock"
+              name="author"
               value={book.author}
               onChange={handleInputChange}
             />

@@ -63,6 +63,7 @@ const ShopContextProvider = (props) => {
     setTitle,
     setSelectedItems,
     selectedItems,
+    getLocalCartData,
   };
   return (
     <ShopContext.Provider value={contextvalue}>
