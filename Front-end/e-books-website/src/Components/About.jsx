@@ -56,7 +56,7 @@ const About = () => {
                     <h3>Acheivements</h3>
                     <hr />
                     <p>
-                      {" "}
+                    
                       In Online Bookstore, we're proud of our achievements in
                       shaping the world of online reading. With millions of
                       satisfied customers, we've become the go-to destination

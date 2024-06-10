@@ -22,7 +22,7 @@ const Navbar = () => {
             </div>
             <ul className="menu-items">
               <li>
-                <Link to="/Home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li className="dropdown">
                 <span>Categories</span>

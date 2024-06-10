@@ -69,7 +69,7 @@ const Table = () => {
             <th>Title</th>
             <th>Price</th>
             <th>Rating</th>
-            <th>Stock</th>
+            <th>Author</th>
             <th>Category</th>
             <th>Thumbnail</th>
             <th>Actions</th>
@@ -82,7 +82,7 @@ const Table = () => {
               <td>{item.title}</td>
               <td>{item.price}</td>
               <td>{item.rating}</td>
-              <td>{item.stock}</td>
+              <td>{item.author}</td>
               <td>{item.category}</td>
               <td>
                 <img

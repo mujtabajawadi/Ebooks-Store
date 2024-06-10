@@ -10,8 +10,8 @@ const ebooksSchema = new Schema({
     max: [5, "Invalid Rating"],
     default: 0,
   },
-  stock: { type: Number, min: [0, "Out of Stock"], default: 0 },
-  category: { type: String, required:true},
+  author: { type: String, required: true },
+  category: { type: String, required: true },
   thumbnail: { type: String, required: true },
   deleted: { type: Boolean, default: false },
 });

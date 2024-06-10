@@ -3,8 +3,6 @@ const { User } = require("../model/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-
-
 exports.getAllUsers = async (req, res) => {
   let query = User.find({});
   try {

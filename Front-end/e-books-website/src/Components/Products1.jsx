@@ -21,6 +21,7 @@ const Product = (props) => {
   const { id } = useParams(); // Accessing id parameter from URL
   const [book, setBook] = useState({
     title: "",
+    author: ""
   });
 
   useEffect(() => {
@@ -126,6 +127,8 @@ const Product = (props) => {
   );
 
   return (
+    <div>
+      <Navbar></Navbar>
     <div className="container mt-5">
       <div className="row">
         <div className="col-md-4">
@@ -137,7 +140,7 @@ const Product = (props) => {
                 console.log(item._id)
                 return renderProductItem(item);
               }
-              return null; // Return null if the item._id does not match itemId
+              return null; 
             })
             }
 
@@ -150,6 +153,7 @@ const Product = (props) => {
           <textarea id="result" readOnly value={result} className="result-textarea" />
         </div>
       </div>
+    </div>
     </div>
   );
 };

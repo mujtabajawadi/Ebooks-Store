@@ -404,7 +404,7 @@ const UpdateProduct = () => {
       formData.append("title", book.title);
       formData.append("price", book.price);
       formData.append("category", book.category);
-      formData.append("stock", book.stock);
+      formData.append("author", book.author);
       formData.append("thumbnail", book.thumbnail);
 
       const response = await fetch(
@@ -469,11 +469,11 @@ const UpdateProduct = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="stock">Stock</label>
+            <label htmlFor="stock">Author</label>
             <input
               type="text"
               name="stock"
-              value={book.stock}
+              value={book.author}
               onChange={handleInputChange}
             />
           </div>

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import all_product from "../assets/all_product";
 import new_collections from "../assets/new_collections";
 import data_product from "../assets/data";
@@ -12,9 +12,8 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [prodType, setProdType] = useState();
-  const [newTitle,setTitle] = useState()
+  const [newTitle, setTitle] = useState();
   const [selectedItems, setSelectedItems] = useState([]);
-
 
   const addToCart = (newItemAdd) => {
     const prev = cartItems;
@@ -24,6 +23,20 @@ const ShopContextProvider = (props) => {
     // updateTotal(updatedCart);
     alert("Item Added");
   };
+  //Setting Cart Data to the Local Storage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(contextvalue.cartItems));
+  }, [cartItems]);
+  //Getting Cart Data from Local Storage
+  const getLocalCartData = () => {
+    let localCartData = localStorage.getItem("cart");
+    if (localCartData == []) {
+      return [];
+    } else {
+      return JSON.parse(localCartData);
+    }
+  };
+
   console.log(cartItems);
   const removeFromCart = (itemId) => {
     const updatedCart = cartItems.filter((product) => product._id != itemId);
@@ -49,7 +62,7 @@ const ShopContextProvider = (props) => {
     newTitle,
     setTitle,
     setSelectedItems,
-    selectedItems
+    selectedItems,
   };
   return (
     <ShopContext.Provider value={contextvalue}>

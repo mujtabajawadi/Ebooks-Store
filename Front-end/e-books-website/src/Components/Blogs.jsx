@@ -21,7 +21,7 @@ export default function Blogs() {
   return (
     <div className="bg-white">
       <Navbar></Navbar>
-      <h1 className="text-center pt-4 pb-3 h1">Our Blogs</h1>
+      <h1 className="text-center pt-4 pb-3 h1">Blogs</h1>
       <Swiper
         spaceBetween={30}
         pagination={{
@@ -42,99 +42,99 @@ export default function Blogs() {
         }}
       >
         <SwiperSlide>
-          <div class="card">
+          <div className="card">
             <img
-              class="card-img-top"
+              className="card-img-top"
               src={ArticleImage1}
               alt="Card image cap"
             />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="btn ">
-                Go somewhere
+              <a href="#" className="btn ">
+                Read More
               </a>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <div class="card">
+          <div className="card">
             <img
-              class="card-img-top"
+              className="card-img-top"
               src={ArticleImage2}
               alt="Card image cap"
             />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="btn ">
-                Go somewhere
+              <a href="#" className="btn ">
+                Read More
               </a>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <div class="card">
+          <div className="card">
             <img
-              class="card-img-top"
+              className="card-img-top"
               src={ArticleImage3}
               alt="Card image cap"
             />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="btn ">
-                Go somewhere
+              <a href="#" className="btn ">
+                Read More
               </a>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <div class="card">
+          <div className="card">
             <img
-              class="card-img-top"
+              className="card-img-top"
               src={ArticleImage1}
               alt="Card image cap"
             />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="btn ">
-                Go somewhere
+              <a href="#" className="btn ">
+                Read More
               </a>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div class="card">
+          <div className="card">
             <img
-              class="card-img-top"
+              className="card-img-top"
               src={ArticleImage2}
               alt="Card image cap"
             />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="btn ">
-                Go somewhere
+              <a href="#" className="btn ">
+               Read More
               </a>
             </div>
           </div>

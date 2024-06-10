@@ -252,7 +252,7 @@ const AddProduct = () => {
       formDataToSend.append("price", formData.price);
       formDataToSend.append("category", formData.category);
       formDataToSend.append("rating", formData.rating);
-      formDataToSend.append("stock", formData.stock);
+      formDataToSend.append("author", formData.author);
       formDataToSend.append("thumbnail", formData.thumbnail);
 
       const response = await axios.post(
@@ -314,7 +314,7 @@ const AddProduct = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="stock">Stock</label>
+            <label htmlFor="stock">Author</label>
             <input
               type="text"
               name="stock"

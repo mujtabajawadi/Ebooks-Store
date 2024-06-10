@@ -4,6 +4,7 @@ import instagram_icon from "../assets/Images/instagram_icon.png";
 import pinterest_icon from "../assets/Images/pintester_icon.png";
 import whatsapp_icon from "../assets/Images/whatsapp_icon.png";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
   <div className="footer py-4">
@@ -21,7 +22,8 @@ const Footer = () => {
       <ul className="footer-links">
       
         <li>Contact</li>
-        <li>Blogs</li>
+        <Link className="bloglink" to="/blogs"><li>Blogs</li></Link>
+        
         
       </ul>
       <div className="footer-social-icon text-center">
