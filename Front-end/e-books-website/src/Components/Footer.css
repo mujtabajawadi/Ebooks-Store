@@ -11,6 +11,9 @@ ul {
   display: inline;
 }
 .footer {
-  /* background: var(--color-bg-2); */
   background-color: white;
+}
+.bloglink {
+  text-decoration: none;
+  color: black;
 }

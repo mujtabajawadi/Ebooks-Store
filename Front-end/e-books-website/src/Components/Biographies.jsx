@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "./ShopContext";
-// import ShopCategory from "./ShopCategory";
-// import dropdown_icon from "../components/assets/dropdown_icon.png";
 import Item from "./Item";
 import "./Biographies.css";
 import Navbar from "./Navbar";
@@ -9,7 +7,8 @@ import Footer from "./Footer";
 import axios from "axios";
 
 const Biographies = (props) => {
-  const { type, setType, all_product ,setProdType,setItemId, setTitle} = useContext(ShopContext);
+  const { type, setType, all_product, setProdType, setItemId, setTitle } =
+    useContext(ShopContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -60,7 +59,7 @@ const Biographies = (props) => {
           ))}
         </div>
       </div>
-    <Footer></Footer>
+      <Footer></Footer>
     </div>
   );
 };

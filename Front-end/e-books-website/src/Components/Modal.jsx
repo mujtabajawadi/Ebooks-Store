@@ -1,5 +1,3 @@
-//Code Part-3
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Modal.css";
@@ -12,16 +10,14 @@ const AddProduct = () => {
     category: "",
     rating: "",
     author: "",
-    thumbnail: null, // Initialize thumbnail as null
+    thumbnail: null,
   });
 
   const handleChange = (e) => {
     if (e.target.name === "thumbnail") {
-      // If the target is thumbnail, set the file value
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
       console.log(e);
     } else {
-      // Otherwise, set the value normally
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
@@ -31,8 +27,7 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formDataToSend = new FormData(); // Create FormData object
-      // Append form data to send to the server
+      const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
       formDataToSend.append("price", formData.price);
       formDataToSend.append("category", formData.category);
@@ -42,10 +37,10 @@ const AddProduct = () => {
 
       const response = await axios.post(
         "http://localhost:8080/products/createProduct",
-        formDataToSend, // Send the FormData object
+        formDataToSend,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Set content type as multipart/form-data
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -112,7 +107,7 @@ const AddProduct = () => {
             <input
               type="file"
               name="thumbnail"
-              accept="image/*" // Specify accepted file types
+              accept="image/*"
               onChange={handleChange}
             />
           </div>

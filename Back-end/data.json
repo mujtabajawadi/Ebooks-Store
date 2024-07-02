@@ -47,30 +47,33 @@
     }
   ],
 
- "users":[
-  {
-    "firstName":"Terry",
-    "lastName":"Medhurst",
-    "email":"atuny0@sohu.com",
-    "password":"9uQFF1Lh"},
+  "users": [
+    {
+      "firstName": "Terry",
+      "lastName": "Medhurst",
+      "email": "atuny0@sohu.com",
+      "password": "9uQFF1Lh"
+    },
 
-  {
-    "firstName":"Sheldon",
-    "lastName":"Quigley",
-    "email":"hbingley1@plala.or.jp",
-    "password":"CQutx25i8r"},
+    {
+      "firstName": "Sheldon",
+      "lastName": "Quigley",
+      "email": "hbingley1@plala.or.jp",
+      "password": "CQutx25i8r"
+    },
 
-  {
-    "firstName":"Terrill",
-    "lastName":"Hills",
-    "email":"rshawe2@51.la",
-    "password":"OWsTbMUgFc"},
-  
-  {
-    "firstName":"Miles",
-    "lastName":"Cummerata",
-    "email":"yraigatt3@nature.com",
-    "password":"sRQxjPfdS"}
+    {
+      "firstName": "Terrill",
+      "lastName": "Hills",
+      "email": "rshawe2@51.la",
+      "password": "OWsTbMUgFc"
+    },
+
+    {
+      "firstName": "Miles",
+      "lastName": "Cummerata",
+      "email": "yraigatt3@nature.com",
+      "password": "sRQxjPfdS"
+    }
   ]
-
 }

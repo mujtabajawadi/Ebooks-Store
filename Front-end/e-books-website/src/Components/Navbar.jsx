@@ -60,16 +60,12 @@ const Navbar = () => {
                 </Link>
               </button>
             </ul>
-            {/* <div className="d-flex">
-              <img src={logo} />
-              <h1 className="logo pt-1">SHOPPER</h1>
-            </div> */}
+
             <img
               src={logo}
               style={{ height: "50px", width: "50px" }}
               className="logo "
             />
-            {/* <h1 className="logo1 pt-1 " >SHOPPER</h1> */}
           </div>
         </nav>
       </>

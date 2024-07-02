@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import axios from "axios";
 
 const Sale = () => {
-  const { setItemId, setProdType, setTitle} = useContext(ShopContext);
+  const { setItemId, setProdType, setTitle } = useContext(ShopContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const type = "saleProd";
@@ -17,7 +17,6 @@ const Sale = () => {
     fetchProducts();
     document.title = "Sale";
   }, []);
-
 
   const fetchProducts = async () => {
     try {
@@ -42,7 +41,7 @@ const Sale = () => {
         <h1 className="h1 ">SALES</h1>
         <hr />
         <div className="collections row">
-        {products.map((item, i) => (
+          {products.map((item, i) => (
             <div
               key={i}
               className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"

@@ -7,12 +7,11 @@ import headerBook4 from "../assets/Images/headerbook4.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
 
-// import required modules
 import { EffectCards } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -23,11 +22,13 @@ const Hero = () => {
             <div className="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
               <h1 className="heading">For All Your Reading Needs</h1>
               <p className="mt-4 para">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
-                pariatur necessitatibus ullam rerum dignissimos veritatis labore
-                laborum, rem beatae reiciendis.
+                <h1>TURNING PAGES,DIGITALLY!</h1>
               </p>
-              <button className="mt-4 custom-button py-2 px-3">LEARN MORE</button>
+              <Link className="learnmore" to="/blogs">
+                <button className="mt-4 custom-button py-2 px-3">
+                  LEARN MORE
+                </button>
+              </Link>
             </div>
 
             <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">

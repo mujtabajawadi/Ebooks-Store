@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 const Table = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     fetchProducts();
@@ -44,7 +42,7 @@ const Table = () => {
         axios
           .delete(`http://localhost:8080/products/deleteProduct/${id}`)
           .then((res) => {
-            setProducts(products.filter(product => product._id !== id));
+            setProducts(products.filter((product) => product._id !== id));
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
@@ -95,10 +93,7 @@ const Table = () => {
                 <Link className="edit" to={`/updateProduct/${item._id}`}>
                   <BsFillPencilFill />
                 </Link>
-                <Link
-                  className="delete"
-                  onClick={() => handleDelete(item._id)}
-                >
+                <Link className="delete" onClick={() => handleDelete(item._id)}>
                   <BsFillTrashFill />
                 </Link>
               </td>

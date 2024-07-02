@@ -11,6 +11,7 @@ import NewCollections from "./NewCollections";
 import NewsLetter from "./NewsLetter";
 import Reviews from "./Reviews";
 import Footer from "./Footer";
+import video from "../assets/Images/Project Video.mp4";
 
 const Home = (props) => {
   const { type, setType, all_product, setProdType, setItemId } =

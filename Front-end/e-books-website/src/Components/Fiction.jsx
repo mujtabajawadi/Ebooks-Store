@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-//import dropdown_icon from "../components/assets/dropdown_icon.png";
 import { ShopContext } from "./ShopContext";
 import "./Fiction.css";
 import Item from "./Item";
@@ -38,7 +37,7 @@ export default function Fiction(props) {
     <div className="bg-white">
       <Navbar></Navbar>
       <div className="container">
-      <img src={props.banner} style={{ height: "350px", width: "100%" }} />
+        <img src={props.banner} style={{ height: "350px", width: "100%" }} />
         <div className="shopcategory-products row ">
           <h1 className="fictionHeading">Fiction Books</h1>
           {products.map((item, i) => (
@@ -47,7 +46,7 @@ export default function Fiction(props) {
               className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
               onClick={() => {
                 setItemId(item._id);
-                setTitle(item.title); /*setProdType("dataProd");*/
+                setTitle(item.title); 
               }}
             >
               <Item

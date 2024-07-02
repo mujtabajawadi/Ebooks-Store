@@ -7,59 +7,56 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-  <div className="footer py-4">
-    <div className=" container">
-      <div className="footer-logo d-flex justify-content-center">
-        <img
-          src={footer_logo}
-          style={{
-            maxWidth: "5%", // Ensure image resizes within parent container
-            height: "60px", // Maintain aspect ratio
-          }}
-        />
-      
-      </div>
-      <ul className="footer-links">
-      
-        <li>Contact</li>
-        <Link className="bloglink" to="/blogs"><li>Blogs</li></Link>
-        
-        
-      </ul>
-      <div className="footer-social-icon text-center">
-        <div className="footer-icon-container" >
+    <div className="footer py-4">
+      <div className=" container">
+        <div className="footer-logo d-flex justify-content-center">
           <img
-            src={instagram_icon}
+            src={footer_logo}
             style={{
-              maxWidth: "30px", // Ensure image resizes within parent container
-              height: "auto", // Maintain aspect ratio
+              maxWidth: "5%",
+              height: "60px",
             }}
           />
         </div>
-        <div className="footer-icon-container ps-3">
-          <img
-            src={pinterest_icon}
-            style={{
-              maxWidth: "30px", // Ensure image resizes within parent container
-              height: "auto", // Maintain aspect ratio
-            }}
-          />
+        <ul className="footer-links">
+          <Link className="bloglink" to="/blogs">
+            <li>Blogs</li>
+          </Link>
+        </ul>
+        <div className="footer-social-icon text-center">
+          <div className="footer-icon-container">
+            <img
+              src={instagram_icon}
+              style={{
+                maxWidth: "30px",
+                height: "auto",
+              }}
+            />
+          </div>
+          <div className="footer-icon-container ps-3">
+            <img
+              src={pinterest_icon}
+              style={{
+                maxWidth: "30px",
+                height: "auto",
+              }}
+            />
+          </div>
+          <div className="footer-icon-container ps-3">
+            <img
+              src={whatsapp_icon}
+              style={{
+                maxWidth: "30px",
+                height: "auto",
+              }}
+            />
+          </div>
         </div>
-        <div className="footer-icon-container ps-3">
-          <img
-            src={whatsapp_icon}
-            style={{
-              maxWidth: "30px", // Ensure image resizes within parent container
-              height: "auto", // Maintain aspect ratio
-            }}
-          />
+        <div className="footer-copyright">
+          <hr />
+          <p className="text-center">Copyright @ 2024 - All Rights Reserved</p>
         </div>
       </div>
-      <div className="footer-copyright">
-        <hr />
-        <p className="text-center">Copyright @ 2023 - All Rights Reserved</p>
-      </div>
-    </div>
     </div>
   );
 };

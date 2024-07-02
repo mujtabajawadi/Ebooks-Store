@@ -134,7 +134,7 @@ export default function Blogs() {
                 the bulk of the card's content.
               </p>
               <a href="#" className="btn ">
-               Read More
+                Read More
               </a>
             </div>
           </div>

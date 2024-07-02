@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-//import dropdown_icon from "../components/assets/dropdown_icon.png";
 import { ShopContext } from "./ShopContext";
-//import ShopCategory from "./ShopCategory";
 import Item from "./Item";
 import "./NonFiction.css";
 import Navbar from "./Navbar";
@@ -46,7 +44,7 @@ export default function NonFiction(props) {
               className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
               onClick={() => {
                 setItemId(item._id);
-                setTitle(item.title); /*setProdType("dataProd");*/
+                setTitle(item.title);
               }}
             >
               <Item

@@ -11,10 +11,10 @@ import Success from "./Components/Success";
 import Checkout from "./Components/Checkout";
 import Home from "./Components/Home";
 import Product from "./Components/Products1";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Fiction from "./Components/Fiction";
 import NonFiction from "./Components/NonFiction";
-import fictionBanner from  "./assets/Images/banner_mens.jpg";
+import fictionBanner from "./assets/Images/banner_mens.jpg";
 import nonfictionBanner from "./assets/Images/banner_women.jpg";
 import biographiesBanner from "./assets/Images/banner_kids.jpg";
 import Biographies from "./Components/Biographies";
@@ -23,15 +23,20 @@ import Blogs from "./Components/Blogs";
 import Cart from "./Components/Cart";
 import About from "./Components/About";
 
-
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/fiction" element={<Fiction banner={fictionBanner}/>}/>
-        <Route path="/non-fiction" element={<NonFiction banner={nonfictionBanner}/>}/>
-        <Route path="/biographies" element={<Biographies banner={biographiesBanner}/>}/>
+        <Route path="/fiction" element={<Fiction banner={fictionBanner} />} />
+        <Route
+          path="/non-fiction"
+          element={<NonFiction banner={nonfictionBanner} />}
+        />
+        <Route
+          path="/biographies"
+          element={<Biographies banner={biographiesBanner} />}
+        />
         <Route path="/sale" element={<Sale />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/about" element={<About />} />
@@ -47,7 +52,6 @@ function App() {
         <Route path="/updateProduct/:id" element={<UpdateProduct />} />
         <Route path="/deleteProduct/:id" element={<deleteProduct />} />
         <Route path="/product/:id" element={<Product />} />
-
       </Routes>
     </Router>
   );

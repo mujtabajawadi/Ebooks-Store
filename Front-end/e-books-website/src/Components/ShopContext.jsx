@@ -14,6 +14,7 @@ const ShopContextProvider = (props) => {
   const [prodType, setProdType] = useState();
   const [newTitle, setTitle] = useState();
   const [selectedItems, setSelectedItems] = useState([]);
+  const [localCart, setLocalCart] = useState([]);
 
   const addToCart = (newItemAdd) => {
     const prev = cartItems;
@@ -33,6 +34,7 @@ const ShopContextProvider = (props) => {
     if (localCartData == []) {
       return [];
     } else {
+      setLocalCart(localCartData);
       return JSON.parse(localCartData);
     }
   };
@@ -41,7 +43,6 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     const updatedCart = cartItems.filter((product) => product._id != itemId);
     setCartItems(updatedCart);
-    // updateTotal(updatedCart);
     alert("Item Removed");
   };
   console.log(cartItems);
