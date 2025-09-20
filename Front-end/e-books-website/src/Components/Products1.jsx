@@ -39,6 +39,8 @@ const Product = (props) => {
       const response = await fetch(
         `http://localhost:8080/generateContent/Give me detail about the book ${book}`
       );
+
+      // console.log(response);
       const text = await response.text();
       console.log(text);
       setResult(text);

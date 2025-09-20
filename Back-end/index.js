@@ -7,13 +7,14 @@ const passport = require("passport");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config();
 
-require("dotenv").config();
 const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type",
   })
@@ -60,51 +61,47 @@ async function main() {
 
 //AI COntent Generator Code
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-const dotenv = require("dotenv");
-
-dotenv.config();
+const { GoogleGenAI } = require("@google/genai");
 
 app.use(express.static(path.join(__dirname, "Modules")));
 
-app.post("/generateContent", upload.single("image"), async (req, res) => {
-  try {
-    const { buffer } = req.file;
+// app.post("/generateContent", upload.single("image"), async (req, res) => {
+//   try {
+//     const { buffer } = req.file;
 
-    const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-    const generationConfig = {
-      temperature: 0.4,
-      topP: 1,
-      topK: 32,
-      maxOutputTokens: 4096,
-    };
-    const model = genAI.getGenerativeModel({
-      model: "gemini-pro-vision",
-      generationConfig,
-    });
+//     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+//     const generationConfig = {
+//       temperature: 0.4,
+//       topP: 1,
+//       topK: 32,
+//       maxOutputTokens: 4096,
+//     };
+//     const model = genAI.getGenerativeModel({
+//       model: "gemini-pro-vision",
+//       generationConfig,
+//     });
 
-    const parts = [
-      { text: "Describe this image:\n" },
-      {
-        inlineData: {
-          mimeType: "image/jpeg",
-          data: buffer.toString("base64"),
-        },
-      },
-    ];
+//     const parts = [
+//       { text: "Describe this image:\n" },
+//       {
+//         inlineData: {
+//           mimeType: "image/jpeg",
+//           data: buffer.toString("base64"),
+//         },
+//       },
+//     ];
 
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts }],
-    });
-    const response = await result.response;
+//     const result = await model.generateContent({
+//       contents: [{ role: "user", parts }],
+//     });
+//     const response = await result.response;
 
-    res.json({ success: true, description: response.text() });
-  } catch (error) {
-    console.error("Error generating content:", error);
-    res.json({ success: false, error: "Error generating content" });
-  }
-});
+//     res.json({ success: true, description: response.text() });
+//   } catch (error) {
+//     console.error("Error generating content:", error);
+//     res.json({ success: false, error: "Error generating content" });
+//   }
+// });
 
 app.get("/config", (req, res) => {
   try {
@@ -114,7 +111,7 @@ app.get("/config", (req, res) => {
     }
 
     // Log a masked or generic message instead of the actual API key
-    console.log("API_KEY: ****");
+    console.log("API_KEY: ****", apiKey);
 
     res.json({ success: true, message: "API success" });
   } catch (error) {
@@ -127,21 +124,26 @@ app.get("/generateContent/:prompt", async (req, res) => {
   try {
     const prompt = req.params.prompt;
 
+    console.log(prompt);
     const apiKey = process.env.API_KEY;
+
+    console.log("Gemini Api key: ", apiKey);
     if (!apiKey) {
       throw new Error("API_KEY is not set.");
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const ai = new GoogleGenAI({ apiKey: `${apiKey}` });
 
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: `${prompt}`,
     });
 
-    const response = await result.response;
-    const text = await response.text();
-    res.send(text);
+    // console.log(response)
+    const text = response.text;
+    console.log(text);
+
+    return res.send(text);
   } catch (error) {
     console.error("Error generating content:", error);
     res.status(500).send("Error generating content");
