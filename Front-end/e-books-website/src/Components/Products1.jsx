@@ -89,6 +89,7 @@ const Product = (props) => {
     fetchProducts();
   }, []);
 
+
   const renderProductItem = (item) => (
     <div key={item._id} className="product-card mb-4">
       <div className="card h-100">
@@ -131,7 +132,7 @@ const Product = (props) => {
         <div className="row">
           <div className="col-md-4">
             {products.map((item) => {
-              if (item._id == itemId) {
+              if (item._id === id) {
                 console.log(item._id);
                 return renderProductItem(item);
               }

@@ -55,11 +55,11 @@ app.use("/auth/", authRouter.router);
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/ebooks");
+  await mongoose.connect(`${process.env.MONGODB_URI}/PaperlessPages`);
   console.log("Database Connected!");
 }
 
-//AI COntent Generator Code
+//AI Content Generator Code
 
 const { GoogleGenAI } = require("@google/genai");
 
@@ -111,7 +111,7 @@ app.get("/config", (req, res) => {
     }
 
     // Log a masked or generic message instead of the actual API key
-    console.log("API_KEY: ****", apiKey);
+    console.log("API_KEY: ****");
 
     res.json({ success: true, message: "API success" });
   } catch (error) {

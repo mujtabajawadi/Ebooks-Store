@@ -11,7 +11,6 @@ const Cart = () => {
     removeFromCart,
     setSelectedItems,
     selectedItems,
-    getLocalCartData,
   } = useContext(ShopContext);
 
   const handleCheckout = (id) => {

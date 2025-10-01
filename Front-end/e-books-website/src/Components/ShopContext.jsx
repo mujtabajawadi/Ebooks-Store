@@ -9,12 +9,19 @@ export const ShopContext = createContext(null);
 const ShopContextProvider = (props) => {
   const [type, setType] = useState();
   const [itemId, setItemId] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [prodType, setProdType] = useState();
   const [newTitle, setTitle] = useState();
   const [selectedItems, setSelectedItems] = useState([]);
-  const [localCart, setLocalCart] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    try {
+      return storedCart ? JSON.parse(storedCart) : [];
+    } catch (error) {
+      console.error("Error parsing cart data from localStorage:", error);
+      return [];
+    }
+  });
 
   const addToCart = (newItemAdd) => {
     const prev = cartItems;
@@ -26,18 +33,9 @@ const ShopContextProvider = (props) => {
   };
   //Setting Cart Data to the Local Storage
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(contextvalue.cartItems));
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
   //Getting Cart Data from Local Storage
-  const getLocalCartData = () => {
-    let localCartData = localStorage.getItem("cart");
-    if (localCartData == []) {
-      return [];
-    } else {
-      setLocalCart(localCartData);
-      return JSON.parse(localCartData);
-    }
-  };
 
   console.log(cartItems);
   const removeFromCart = (itemId) => {
@@ -64,7 +62,6 @@ const ShopContextProvider = (props) => {
     setTitle,
     setSelectedItems,
     selectedItems,
-    getLocalCartData,
   };
   return (
     <ShopContext.Provider value={contextvalue}>

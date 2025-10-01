@@ -56,12 +56,6 @@ function Product() {
         id="result"
         readOnly
         value={result}
-        style={{
-          width: "100%",
-          height: "300px",
-          boxSizing: "border-box",
-          marginTop: "30px",
-        }}
       />
     </div>
   );
