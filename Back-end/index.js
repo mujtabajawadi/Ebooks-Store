@@ -177,7 +177,7 @@ app.post("/checkout", async (req, res) => {
       }),
       success_url:
         "https://drive.google.com/file/d/1T4B7oDpT_UMbdlaf_SBMYq3Ywh90sjh6/view?usp=sharing",
-      cancel_url: "http://localhost:5173/cancel",
+      cancel_url: "https://paperlesspages.netlify.app/cancel",
     });
 
     res.json({ url: session.url });
