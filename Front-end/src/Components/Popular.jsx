@@ -16,7 +16,9 @@ const Popular = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/products");
+      const response = await axios.get(
+        "https://ebooks-store.onrender.com/products"
+      );
       setProducts(response.data);
       setLoading(false);
     } catch (error) {

@@ -16,7 +16,7 @@ const UpdateProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/products/getProduct/${id}`)
+      .get(`https://ebooks-store.onrender.com/products/getProduct/${id}`)
       .then((result) => {
         setBook(result.data);
       })
@@ -47,7 +47,7 @@ const UpdateProduct = () => {
       formData.append("thumbnail", book.thumbnail);
 
       const response = await fetch(
-        `http://localhost:8080/products/updateProduct/${id}`,
+        `https://ebooks-store.onrender.com/products/updateProduct/${id}`,
         {
           method: "PATCH",
           body: formData,

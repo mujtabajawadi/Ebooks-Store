@@ -36,7 +36,7 @@ const AddProduct = () => {
       formDataToSend.append("thumbnail", formData.thumbnail);
 
       const response = await axios.post(
-        "http://localhost:8080/products/createProduct",
+        "https://ebooks-store.onrender.com/products/createProduct",
         formDataToSend,
         {
           headers: {

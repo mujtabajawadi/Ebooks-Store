@@ -24,7 +24,7 @@ const Product = (props) => {
   useEffect(() => {
     console.log(id);
     axios
-      .get(`http://localhost:8080/products/getProduct/${id}`)
+      .get(`https://ebooks-store.onrender.com/products/getProduct/${id}`)
       .then((result) => {
         setBook(result.data.title);
         console.log(result.data.title);
@@ -37,7 +37,7 @@ const Product = (props) => {
       setResult("Generating...");
 
       const response = await fetch(
-        `http://localhost:8080/generateContent/Give me detail about the book ${book}`
+        `https://ebooks-store.onrender.com/generateContent/Give me detail about the book ${book}`
       );
 
       // console.log(response);
@@ -75,7 +75,9 @@ const Product = (props) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/products");
+      const response = await axios.get(
+        "https://ebooks-store.onrender.com/products"
+      );
       setProducts(response.data);
       setLoading(false);
     } catch (error) {

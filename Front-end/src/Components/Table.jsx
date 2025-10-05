@@ -15,7 +15,9 @@ const Table = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/products");
+      const response = await axios.get(
+        "https://ebooks-store.onrender.com/products"
+      );
       setProducts(response.data);
       setLoading(false);
     } catch (error) {
@@ -40,7 +42,9 @@ const Table = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:8080/products/deleteProduct/${id}`)
+          .delete(
+            `https://ebooks-store.onrender.com/products/deleteProduct/${id}`
+          )
           .then((res) => {
             setProducts(products.filter((product) => product._id !== id));
             Swal.fire({
@@ -84,7 +88,7 @@ const Table = () => {
               <td>{item.category}</td>
               <td>
                 <img
-                  src={`http://localhost:8080/uploads/${item.thumbnail}`}
+                  src={`https://ebooks-store.onrender.com/uploads/${item.thumbnail}`}
                   alt={item.title}
                   className="thumbnail"
                 />
