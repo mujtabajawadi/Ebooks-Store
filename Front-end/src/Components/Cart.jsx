@@ -43,7 +43,7 @@ const Cart = () => {
               />
               <div className="card-body">
                 <button
-                  className="btn btn-danger btn-block"
+                  className="btn m-1 btn-danger btn-block"
                   onClick={() => {
                     removeFromCart(item._id);
                   }}
@@ -51,7 +51,7 @@ const Cart = () => {
                   Remove
                 </button>
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn m-1 btn-primary btn-block"
                   onClick={() => handleCheckout(item._id)}
                 >
                   Checkout

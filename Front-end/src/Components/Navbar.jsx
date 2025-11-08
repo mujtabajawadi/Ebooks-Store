@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import logo from "../assets/Images/logo.png";
 import cart_icon from "../assets/Images/cart_icon.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -21,51 +21,56 @@ const Navbar = () => {
               <span className="line line3" />
             </div>
             <ul className="menu-items">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
               <li className="dropdown">
                 <span>Categories</span>
                 <div className="dropdown-content">
-                  <li className="ps-5">
-                    <Link to="/fiction">Fiction</Link>
-                  </li>
-                  <li className="ps-5">
-                    <Link to="/non-fiction">Non-fiction</Link>
-                  </li>
-                  <li className="ps-5">
-                    <Link to="/biographies">Biographies</Link>
-                  </li>
+                  <Link to="/fiction">
+                    <li className="ps-5">Fiction</li>
+                  </Link>
+                  <Link to="/non-fiction">
+                    <li className="ps-5">Non-fiction</li>
+                  </Link>
+                  <Link to="/biographies">
+                    <li className="ps-5">Biographies</li>
+                  </Link>
                 </div>
               </li>
-              <li>
-                <Link to="/sale">Sale</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <Link to="/cart" className="ms-4">
-                <img
-                  src={cart_icon}
-                  style={{ height: "30px", width: "30px" }}
-                />
+              <Link to="/sale">
+                <li>Sale</li>
               </Link>
-
-              <button
-                className="btn btn-warning"
-                style={{ marginLeft: "50px", borderRadius: "25px" }}
-              >
-                <Link to="/signup" style={{ color: "white" }}>
-                  Signup
-                </Link>
-              </button>
+              <Link to="/about">
+                <li>About</li>
+              </Link>
+              <Link to="/cart" className="ms-4">
+                <li>
+                  <img
+                    src={cart_icon}
+                    style={{ height: "30px", width: "30px" }}
+                  />
+                </li>
+              </Link>
+              <Link to="/signup" style={{ color: "white" }}>
+                <li>
+                  <button
+                    className="btn btn-warning"
+                    style={{ borderRadius: "25px" }}
+                  >
+                    Signup
+                  </button>
+                </li>
+              </Link>
             </ul>
 
-            <img
-              src={logo}
-              style={{ height: "50px", width: "50px" }}
-              className="logo "
-            />
+            <NavLink to="/">
+              <img
+                src={logo}
+                style={{ height: "50px", width: "50px" }}
+                className="logo "
+              />
+            </NavLink>
           </div>
         </nav>
       </>

@@ -21,9 +21,9 @@ const Hero = () => {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
               <h1 className="heading">For All Your Reading Needs</h1>
-              <p className="mt-4 para">
+              <div className="mt-4 para">
                 <h1>TURNING PAGES,DIGITALLY!</h1>
-              </p>
+              </div>
               <Link className="learnmore" to="/blogs">
                 <button className="mt-4 custom-button py-2 px-3">
                   LEARN MORE

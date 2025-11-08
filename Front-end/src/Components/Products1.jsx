@@ -42,7 +42,7 @@ const Product = (props) => {
 
       // console.log(response);
       const text = await response.text();
-      console.log(text);
+      console.info(text);
       setResult(text);
     } catch (error) {
       console.error("Error during generation:", error.message);
@@ -130,9 +130,9 @@ const Product = (props) => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="container mt-5">
+      <div className="container mt-3 col-sm-12 col-md-6">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-12 col-lg-4">
             {products.map((item) => {
               if (item._id === id) {
                 console.log(item._id);
@@ -142,19 +142,19 @@ const Product = (props) => {
             })}
           </div>
 
-          <div className="col-md-8">
-            <button onClick={fetchContent} disabled={loading}>
+          <div className="col-md-12 col-lg-8">
+            <div className="text-center">
+
+            <button onClick={fetchContent} className="btn info-btn btn-primary mt-2" disabled={loading}>
               Get More Info
             </button>
+            </div>
             {loading && (
               <div style={{ display: "block", height: "20px" }}>Loading...</div>
             )}
-            <textarea
-              id="result"
-              readOnly
-              value={result}
-              className="result-textarea"
-            />
+            <pre id="result">
+              {result}
+            </pre>
           </div>
         </div>
       </div>
