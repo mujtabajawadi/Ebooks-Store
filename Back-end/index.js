@@ -14,8 +14,6 @@ const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 app.use(
   cors({
     origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: "Content-Type",
   })
 );
 
