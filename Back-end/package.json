@@ -22,7 +22,7 @@
     "stripe": "^15.7.0"
   },
   "scripts": {
-    "start": "node index.cjs",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "server-json": "json-server --watch data.json"
   },

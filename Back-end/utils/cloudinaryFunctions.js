@@ -36,6 +36,6 @@ exports.deleteFromCloudinary = async (url) => {
     });
     return deleteResponse;
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };
