@@ -29,6 +29,7 @@ exports.createProduct = async (req, res) => {
 
     const thumbnailPath = await uploadOnCloudinary(fileDataURI.content);
 
+    console.log(thumbnailPath)
     if (!thumbnailPath) {
       console.error("500: Failed to upload File");
     }
