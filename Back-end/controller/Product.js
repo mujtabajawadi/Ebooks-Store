@@ -61,9 +61,9 @@ exports.fetchAllProducts = async (req, res) => {
     // Modify each product object to include the image URL
     const productsWithImageURL = products.map((product) => ({
       ...product._doc,
-      thumbnail: `${req.protocol}://${req.get("host")}/uploads/${path.basename(
-        product.thumbnail
-      )}`,
+      // thumbnail: `${req.protocol}://${req.get("host")}/uploads/${path.basename(
+      //   product.thumbnail
+      // )}`,
     }));
 
     // Send the modified product list as the response
