@@ -1,11 +1,37 @@
+const path = require("path");
 const { json } = require("express");
 const { Product } = require("../model/Product");
+const {
+  uploadOnCloudinary,
+  deleteFromCloudinary,
+} = require("../utils/cloudinaryFunctions.js");
+
+const DatauriParser = require("datauri/parser");
+const parser = new DatauriParser();
+
+const formatBufferToDataUri = (file) => {
+  return parser.format(path.extname(file.originalname).toString(), file.buffer);
+};
 
 exports.createProduct = async (req, res) => {
   try {
     // Extract product data from request body
     const { title, price, category, rating, author, thumbnail } = req.body;
 
+    const productThumbnailLocalPath = req.file;
+
+    if (!productThumbnailLocalPath) {
+      console.error("400: Thumbnail is required");
+    }
+    console.log(productThumbnailLocalPath)
+
+    const fileDataURI = formatBufferToDataUri(productThumbnailLocalPath)
+
+    const thumbnailPath = await uploadOnCloudinary(fileDataURI.content);
+
+    if (!thumbnailPath) {
+      console.error("500: Failed to upload File");
+    }
     // Create a new product instance
     const product = new Product({
       title,
@@ -13,7 +39,7 @@ exports.createProduct = async (req, res) => {
       category,
       rating,
       author,
-      thumbnail: req.file.path.replace(/\\/g, "/"), // Save the file path in the database
+      thumbnail: thumbnailPath.url,
     });
 
     // Save the product to the database
@@ -27,8 +53,6 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-const path = require("path");
-
 exports.fetchAllProducts = async (req, res) => {
   try {
     // Fetch all products from the database
@@ -37,9 +61,9 @@ exports.fetchAllProducts = async (req, res) => {
     // Modify each product object to include the image URL
     const productsWithImageURL = products.map((product) => ({
       ...product._doc,
-      thumbnail: `${req.protocol}://${req.get("host")}/uploads/${path.basename(
-        product.thumbnail
-      )}`,
+      // thumbnail: `${req.protocol}://${req.get("host")}/uploads/${path.basename(
+      //   product.thumbnail
+      // )}`,
     }));
 
     // Send the modified product list as the response
