@@ -16,7 +16,6 @@ const AddProduct = () => {
   const handleChange = (e) => {
     if (e.target.name === "thumbnail") {
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
-      console.log(e);
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -33,7 +32,11 @@ const AddProduct = () => {
       formDataToSend.append("category", formData.category);
       formDataToSend.append("rating", formData.rating);
       formDataToSend.append("author", formData.author);
-      formDataToSend.append("thumbnail", formData.thumbnail);
+      if (formData.thumbnail) {
+        formDataToSend.append("thumbnail", formData.thumbnail);
+      }
+
+      console.log(formData);
 
       const response = await axios.post(
         "https://ebooks-store.onrender.com/products/createProduct",

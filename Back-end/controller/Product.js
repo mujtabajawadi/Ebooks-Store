@@ -1,11 +1,36 @@
+const path = require("path");
 const { json } = require("express");
 const { Product } = require("../model/Product");
+const {
+  uploadOnCloudinary,
+  deleteFromCloudinary,
+} = require("../utils/cloudinaryFunctions.js");
+
+const DatauriParser = require("datauri/parser");
+const parser = new DatauriParser();
+
+const formatBufferToDataUri = (file) => {
+  return parser.format(path.extname(file.originalname).toString(), file.buffer);
+};
 
 exports.createProduct = async (req, res) => {
   try {
     // Extract product data from request body
     const { title, price, category, rating, author, thumbnail } = req.body;
 
+    const productThumbnailLocalPath = req.file?.path;
+
+    if (!productThumbnailLocalPath) {
+      console.error("400: Thumbnail is required");
+    }
+
+    const fileDataURI = formatBufferToDataUri(productThumbnailLocalPath)
+
+    const thumbnailPath = await uploadOnCloudinary(fileDataURI.content);
+
+    if (!thumbnailPath) {
+      console.error("500: Failed to upload File");
+    }
     // Create a new product instance
     const product = new Product({
       title,
@@ -13,7 +38,7 @@ exports.createProduct = async (req, res) => {
       category,
       rating,
       author,
-      thumbnail: req.file.path.replace(/\\/g, "/"), // Save the file path in the database
+      thumbnail: thumbnailPath.url,
     });
 
     // Save the product to the database
@@ -26,8 +51,6 @@ exports.createProduct = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-const path = require("path");
 
 exports.fetchAllProducts = async (req, res) => {
   try {

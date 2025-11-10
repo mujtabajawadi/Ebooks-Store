@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
-const multer = require("multer");
 const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -20,23 +19,9 @@ app.use(
   })
 );
 
-// Set storage engine for multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-
-//multer instance
-const upload = multer({ storage: storage });
-
-app.use(upload.single("thumbnail"));
-
 // Middleware
 app.use(express.json());
+
 
 // Serve Static Images
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -62,6 +47,7 @@ async function main() {
 //AI Content Generator Code
 
 const { GoogleGenAI } = require("@google/genai");
+const { upload } = require("./middleware/multer.js");
 
 app.use(express.static(path.join(__dirname, "Modules")));
 
