@@ -50,6 +50,8 @@ const AddProduct = () => {
         }
       );
 
+      console.log(response)
+
       alert("Product Added successfully");
       navigate("/admin");
     } catch (error) {

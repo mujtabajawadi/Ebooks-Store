@@ -18,11 +18,12 @@ exports.createProduct = async (req, res) => {
     // Extract product data from request body
     const { title, price, category, rating, author, thumbnail } = req.body;
 
-    const productThumbnailLocalPath = req.file?.path;
+    const productThumbnailLocalPath = req.file;
 
     if (!productThumbnailLocalPath) {
       console.error("400: Thumbnail is required");
     }
+    console.log(productThumbnailLocalPath)
 
     const fileDataURI = formatBufferToDataUri(productThumbnailLocalPath)
 
