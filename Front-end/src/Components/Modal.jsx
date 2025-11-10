@@ -38,8 +38,10 @@ const AddProduct = () => {
 
       console.log(formData);
 
+      // https://ebooks-store.onrender.com
+
       const response = await axios.post(
-        "https://ebooks-store.onrender.com/products/createProduct",
+        "https://ebooks-store-fileupload-feature-test.onrender.com/products/createProduct",
         formDataToSend,
         {
           headers: {
